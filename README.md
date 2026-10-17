@@ -21,7 +21,7 @@
 | 潜在的なインパクト | 課題の重要性、対象者、実用性、発展性 | 10 |
 | アイデアの質 | 独自性、課題と解決策の適合、洞察 | 10 |
 | **総合点** | 上記4観点の等配点合計 | **40** |
-| DevDay適合度 | 関連する発表、成果物への具体化、利用価値への寄与 | **別枠10** |
+| DevDay適合度 | 関連する発表、活用の深さ、成果物・制作過程の価値への寄与 | **別枠10** |
 
 テーマの対象は[DevDay 2026公式Recap](https://openai.com/index/devday-2026-recap/)の25項目。各Skillに、2026-10-17時点の照合表を同梱しています。単に製品名がある、OpenAI APIを使う、Codexで開発した、というだけでは強い適合としません。関連発表のIDと、実装・モック・制作過程・着想の違いを記録します。
 
@@ -62,3 +62,18 @@ $devday-judge-evidence で /absolute/path/to/submission を一次審査してく
 点数差だけでなく、根拠の正確さ、取りこぼし、未確認の扱い、テーマの対応を見比べます。方式間の平均点・多数決・通過ルールはこのPoCでは定義しません。
 
 プロンプトとしての振る舞いを確認するためのケースは [VALIDATION.md](VALIDATION.md) にあります。これらは実際の提出物で行う試行審査の受け入れ条件であり、採点精度を実証したベンチマークではありません。
+
+## v1.1の評価方針と検証
+
+テーマ点は発表との関連と活用の深さを評価します。モックや制作過程の利用だけを理由とする一律の点数上限は設けません。実装状態・証拠の確かさ・大会条件の充足状況を別に報告します。画像のない作品は、確認できる操作設計からUXを採点し、未観察の視覚品質を加減点しません。
+
+JSON出力はschema_version / rubric_version = 1.1です。旧版とはテーマ点の意味が変わるため、v1.0との得点比較・混合集計は避けてください。全作品に同じ版と大会条件を適用します。
+
+```sh
+# 検証環境にPython 3とjsonschemaが必要です。
+python3 skills/devday-judge-evidence/scripts/validate_report.py /tmp/report.json
+python3 scripts/check_consistency.py
+python3 -m unittest discover -s tests -v
+```
+
+試行審査の手順と記録形式は[calibration/PROTOCOL.md](calibration/PROTOCOL.md)にあります。機械検証の成功と、人間との比較による採点品質の検証は別に扱います。
