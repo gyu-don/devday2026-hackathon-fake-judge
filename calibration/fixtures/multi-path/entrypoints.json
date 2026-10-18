@@ -1,0 +1,4 @@
+{
+  "demo_cli": "cli.main",
+  "local_event_handler": "events.on_task"
+}

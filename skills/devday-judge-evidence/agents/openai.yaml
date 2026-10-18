@@ -1,3 +1,3 @@
 interface:
   display_name: "DevDay審査：証拠照合"
-  short_description: "証拠台帳から全4観点の品質とDevDay 2026適合度を総合審査"
+  short_description: "観点別の証拠カバレッジと裏付けから公式4観点を単独審査"

@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "1.1"
+      "const": "2.0"
     },
     "judge": {
       "enum": [
@@ -12,7 +12,7 @@
       ]
     },
     "rubric_version": {
-      "const": "1.1"
+      "const": "2.0"
     },
     "target": {
       "type": "object",
@@ -67,240 +67,24 @@
     "criteria": {
       "type": "object",
       "properties": {
-        "technical": {
-          "type": "object",
-          "properties": {
-            "score": {
-              "type": [
-                "integer",
-                "null"
-              ],
-              "minimum": 0,
-              "maximum": 10
-            },
-            "confidence": {
-              "enum": [
-                "high",
-                "medium",
-                "low"
-              ]
-            },
-            "reason": {
-              "type": "string"
-            },
-            "strengths": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "gaps": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "unknowns": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "evidence_ids": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "score",
-            "confidence",
-            "reason",
-            "strengths",
-            "gaps",
-            "unknowns",
-            "evidence_ids"
-          ],
-          "additionalProperties": false
+        "new_feature": {
+          "$ref": "#/$defs/criterion"
         },
-        "ux": {
-          "type": "object",
-          "properties": {
-            "score": {
-              "type": [
-                "integer",
-                "null"
-              ],
-              "minimum": 0,
-              "maximum": 10
-            },
-            "confidence": {
-              "enum": [
-                "high",
-                "medium",
-                "low"
-              ]
-            },
-            "reason": {
-              "type": "string"
-            },
-            "strengths": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "gaps": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "unknowns": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "evidence_ids": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "score",
-            "confidence",
-            "reason",
-            "strengths",
-            "gaps",
-            "unknowns",
-            "evidence_ids"
-          ],
-          "additionalProperties": false
+        "usability": {
+          "$ref": "#/$defs/criterion"
         },
-        "impact": {
-          "type": "object",
-          "properties": {
-            "score": {
-              "type": [
-                "integer",
-                "null"
-              ],
-              "minimum": 0,
-              "maximum": 10
-            },
-            "confidence": {
-              "enum": [
-                "high",
-                "medium",
-                "low"
-              ]
-            },
-            "reason": {
-              "type": "string"
-            },
-            "strengths": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "gaps": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "unknowns": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "evidence_ids": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "score",
-            "confidence",
-            "reason",
-            "strengths",
-            "gaps",
-            "unknowns",
-            "evidence_ids"
-          ],
-          "additionalProperties": false
+        "utility": {
+          "$ref": "#/$defs/criterion"
         },
-        "idea": {
-          "type": "object",
-          "properties": {
-            "score": {
-              "type": [
-                "integer",
-                "null"
-              ],
-              "minimum": 0,
-              "maximum": 10
-            },
-            "confidence": {
-              "enum": [
-                "high",
-                "medium",
-                "low"
-              ]
-            },
-            "reason": {
-              "type": "string"
-            },
-            "strengths": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "gaps": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "unknowns": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "evidence_ids": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "score",
-            "confidence",
-            "reason",
-            "strengths",
-            "gaps",
-            "unknowns",
-            "evidence_ids"
-          ],
-          "additionalProperties": false
+        "originality": {
+          "$ref": "#/$defs/criterion"
         }
       },
       "required": [
-        "technical",
-        "ux",
-        "impact",
-        "idea"
+        "new_feature",
+        "usability",
+        "utility",
+        "originality"
       ],
       "additionalProperties": false
     },
@@ -314,149 +98,6 @@
     },
     "max_total": {
       "const": 40
-    },
-    "theme": {
-      "type": "object",
-      "properties": {
-        "reference_version": {
-          "const": "devday-2026-v1.1"
-        },
-        "source_url": {
-          "const": "https://openai.com/index/devday-2026-recap/"
-        },
-        "score": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0,
-          "maximum": 10
-        },
-        "max_score": {
-          "const": 10
-        },
-        "match": {
-          "enum": [
-            "mismatch",
-            "weak",
-            "partial",
-            "strong",
-            "undetermined"
-          ]
-        },
-        "confidence": {
-          "enum": [
-            "high",
-            "medium",
-            "low"
-          ]
-        },
-        "reason": {
-          "type": "string"
-        },
-        "counterfactual": {
-          "type": "string"
-        },
-        "mappings": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "announcement_id": {
-                "type": "string",
-                "pattern": "^DD(0[1-9]|1[0-9]|2[0-5])$"
-              },
-              "announcement": {
-                "type": "string"
-              },
-              "relationship": {
-                "enum": [
-                  "core",
-                  "supporting",
-                  "development_only",
-                  "inspiration",
-                  "mention_only"
-                ]
-              },
-              "basis": {
-                "enum": [
-                  "product_use",
-                  "experience_application",
-                  "concept_only"
-                ]
-              },
-              "implementation": {
-                "enum": [
-                  "connected",
-                  "implemented_unverified",
-                  "mock",
-                  "planned",
-                  "not_applicable"
-                ]
-              },
-              "evidence_ids": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "contribution": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "announcement_id",
-              "announcement",
-              "relationship",
-              "basis",
-              "implementation",
-              "evidence_ids",
-              "contribution"
-            ],
-            "additionalProperties": false
-          }
-        }
-      },
-      "required": [
-        "reference_version",
-        "source_url",
-        "score",
-        "max_score",
-        "match",
-        "confidence",
-        "reason",
-        "counterfactual",
-        "mappings"
-      ],
-      "additionalProperties": false
-    },
-    "event_policy": {
-      "type": "object",
-      "properties": {
-        "rules": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "eligibility": {
-          "enum": [
-            "not_specified",
-            "met",
-            "not_met",
-            "undetermined"
-          ]
-        },
-        "reason": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "rules",
-        "eligibility",
-        "reason"
-      ],
-      "additionalProperties": false
     },
     "evidence": {
       "type": "array",
@@ -534,12 +175,6 @@
       ],
       "additionalProperties": false
     },
-    "method_notes": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
     "limitations": {
       "type": "array",
       "items": {
@@ -578,6 +213,47 @@
       "items": {
         "type": "string"
       }
+    },
+    "feature_use": {
+      "type": "object",
+      "properties": {
+        "reference_version": {
+          "const": "devday-2026-v2.0"
+        },
+        "source_url": {
+          "const": "https://openai.com/index/devday-2026-recap/"
+        },
+        "counterfactual": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/mapping"
+          }
+        }
+      },
+      "required": [
+        "reference_version",
+        "source_url",
+        "counterfactual",
+        "mappings"
+      ],
+      "additionalProperties": false
+    },
+    "method_observations": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/evidence_method"
+        },
+        {
+          "$ref": "#/$defs/journey_method"
+        },
+        {
+          "$ref": "#/$defs/challenge_method"
+        }
+      ]
     }
   },
   "required": [
@@ -590,15 +266,627 @@
     "criteria",
     "total",
     "max_total",
-    "theme",
-    "event_policy",
     "evidence",
     "review_scope",
-    "method_notes",
     "limitations",
     "integrity_flags",
-    "follow_up_questions"
+    "follow_up_questions",
+    "feature_use",
+    "method_observations"
   ],
   "additionalProperties": false,
-  "$schema": "https://json-schema.org/draft/2020-12/schema"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "criterion": {
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 10
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "strengths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "score",
+        "confidence",
+        "reason",
+        "strengths",
+        "gaps",
+        "unknowns",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "mapping": {
+      "type": "object",
+      "properties": {
+        "announcement_id": {
+          "type": "string",
+          "pattern": "^DD(0[1-9]|1[0-9]|2[0-5])$"
+        },
+        "announcement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship": {
+          "enum": [
+            "core",
+            "supporting",
+            "development_only",
+            "inspiration",
+            "mention_only"
+          ]
+        },
+        "basis": {
+          "enum": [
+            "product_use",
+            "experience_application",
+            "concept_only"
+          ]
+        },
+        "implementation": {
+          "enum": [
+            "connected",
+            "implemented_unverified",
+            "mock",
+            "planned",
+            "not_applicable"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "contribution": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "announcement_id",
+        "announcement",
+        "relationship",
+        "basis",
+        "implementation",
+        "evidence_ids",
+        "contribution"
+      ],
+      "additionalProperties": false
+    },
+    "finding": {
+      "type": "object",
+      "properties": {
+        "finding": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "finding",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "check": {
+      "type": "object",
+      "properties": {
+        "trigger": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "finding": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "affected_criteria": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "new_feature",
+              "usability",
+              "utility",
+              "originality"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "trigger",
+        "scope",
+        "finding",
+        "evidence_ids",
+        "affected_criteria"
+      ],
+      "additionalProperties": false
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "claim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "claim",
+              "evidence_ids"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "inspected_paths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "missing_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "contradictions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/finding"
+          }
+        }
+      },
+      "required": [
+        "claims",
+        "inspected_paths",
+        "missing_evidence",
+        "contradictions"
+      ],
+      "additionalProperties": false
+    },
+    "step": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "implementation": {
+          "enum": [
+            "connected",
+            "implemented_unverified",
+            "mock",
+            "planned",
+            "not_applicable"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "affected_criteria": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "new_feature",
+              "usability",
+              "utility",
+              "originality"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "stage",
+        "path",
+        "locator",
+        "observation",
+        "implementation",
+        "evidence_ids",
+        "affected_criteria"
+      ],
+      "additionalProperties": false
+    },
+    "scenario": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "user": {
+          "type": "string",
+          "minLength": 1
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scenario_type": {
+          "enum": [
+            "normal",
+            "exception"
+          ]
+        },
+        "selection_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/step"
+          }
+        },
+        "breaks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/finding"
+          }
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "user",
+        "goal",
+        "scenario_type",
+        "selection_basis",
+        "steps",
+        "breaks",
+        "outcome"
+      ],
+      "additionalProperties": false
+    },
+    "claim_test": {
+      "type": "object",
+      "properties": {
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "counter_hypothesis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "discriminating_check": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supporting_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "opposing_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "alternative_explanations_checked": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "result": {
+          "enum": [
+            "supported",
+            "refuted",
+            "mixed",
+            "unresolved"
+          ]
+        },
+        "finding": {
+          "type": "string",
+          "minLength": 1
+        },
+        "affected_criteria": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "new_feature",
+              "usability",
+              "utility",
+              "originality"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "claim",
+        "counter_hypothesis",
+        "discriminating_check",
+        "supporting_evidence_ids",
+        "opposing_evidence_ids",
+        "alternative_explanations_checked",
+        "result",
+        "finding",
+        "affected_criteria"
+      ],
+      "additionalProperties": false
+    },
+    "evidence_method": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "evidence"
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "new_feature": {
+              "$ref": "#/$defs/coverage"
+            },
+            "usability": {
+              "$ref": "#/$defs/coverage"
+            },
+            "utility": {
+              "$ref": "#/$defs/coverage"
+            },
+            "originality": {
+              "$ref": "#/$defs/coverage"
+            }
+          },
+          "required": [
+            "new_feature",
+            "usability",
+            "utility",
+            "originality"
+          ],
+          "additionalProperties": false
+        },
+        "additional_checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        },
+        "completion_check": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "coverage",
+        "additional_checks",
+        "completion_check"
+      ],
+      "additionalProperties": false
+    },
+    "journey_method": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "journey"
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scenario"
+          }
+        },
+        "supplemental_checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        },
+        "completion_check": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "scenarios",
+        "supplemental_checks",
+        "completion_check"
+      ],
+      "additionalProperties": false
+    },
+    "challenge_method": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "challenge"
+        },
+        "claim_tests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/claim_test"
+          }
+        },
+        "additional_checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        },
+        "completion_check": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "claim_tests",
+        "additional_checks",
+        "completion_check"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "judge": {
+            "const": "devday-judge-evidence"
+          }
+        },
+        "required": [
+          "judge"
+        ]
+      },
+      "then": {
+        "properties": {
+          "method_observations": {
+            "$ref": "#/$defs/evidence_method"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "judge": {
+            "const": "devday-judge-journey"
+          }
+        },
+        "required": [
+          "judge"
+        ]
+      },
+      "then": {
+        "properties": {
+          "method_observations": {
+            "$ref": "#/$defs/journey_method"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "judge": {
+            "const": "devday-judge-challenge"
+          }
+        },
+        "required": [
+          "judge"
+        ]
+      },
+      "then": {
+        "properties": {
+          "method_observations": {
+            "$ref": "#/$defs/challenge_method"
+          }
+        }
+      }
+    }
+  ]
 }
